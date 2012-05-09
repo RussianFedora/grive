@@ -10,6 +10,7 @@ URL:            http://match065.github.com/grive/
 #Source0:        https://github.com/%{name}/%{name}/tarball/%{gitcommit}
 Source0:        https://github.com/match065/grive/tarball/master
 
+BuildRequires:  cmake
 BuildRequires:  libcurl-devel
 BuildRequires:  json-c-devel
 BuildRequires:  expat-devel
@@ -36,7 +37,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 
 %files
-%doc
+%doc COPYING README
+%{_bindir}/%{name}
+%{_libdir
 
 
 
