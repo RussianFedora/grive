@@ -9,7 +9,6 @@ Summary:        An open source Linux client for Google Drive
 License:        GPLv2
 URL:            http://match065.github.com/grive/
 Source0:        https://github.com/match065/%{name}/tarball/%{gitcommit}
-#Source0:        https://github.com/match065/grive/tarball/master
 
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
