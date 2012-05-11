@@ -1,5 +1,6 @@
 %global date 20120510
 %global gitcommit 0c3fdaa
+%global gitfull 0c3fdaa921b21042e27728944c11c0c1bbcc5791
 
 Name:           grive
 Version:        0.0.4
@@ -8,7 +9,7 @@ Summary:        An open source Linux client for Google Drive
 
 License:        GPLv2
 URL:            http://match065.github.com/grive/
-Source0:        https://github.com/match065/%{name}/tarball/%{gitcommit}
+Source0:        https://github.com/match065/%{name}/tarball/%{gitfull}
 
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
