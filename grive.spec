@@ -3,7 +3,7 @@
 
 Name:           grive
 Version:        0.0.4
-Release:        %{date}git%{gitcommit}.1%{?dist}
+Release:        1.%{date}git%{gitcommit}%{?dist}
 Summary:        An open source Linux client for Google Drive
 
 License:        GPLv2
