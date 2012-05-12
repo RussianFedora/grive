@@ -1,6 +1,6 @@
-%global date 20120510
-%global gitcommit 0c3fdaa
-%global gitfull 0c3fdaa921b21042e27728944c11c0c1bbcc5791
+%global date 20120512
+%global gitcommit 444bf61
+%global gitfull 444bf61c73b4f3b3a0fceaf1b799ed46b534cda1
 
 Name:           grive
 Version:        0.0.4
@@ -17,6 +17,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  json-c-devel
 BuildRequires:  expat-devel
 BuildRequires:  openssl-devel
+BuildRequires:  boost-devel
 
 %description
 The purpose of this project is to provide an independent implementation
