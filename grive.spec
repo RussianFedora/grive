@@ -1,9 +1,9 @@
-%global date 20120512
-%global gitcommit 444bf61
-%global gitfull 444bf61c73b4f3b3a0fceaf1b799ed46b534cda1
+%global date 20120531
+%global gitcommit b6fb4a6
+%global gitfull b6fb4a604e51009ece1d8cfe7b45ed603097b47c
 
 Name:           grive
-Version:        0.0.4
+Version:        0.1.0
 Release:        1.%{date}git%{gitcommit}%{?dist}
 Summary:        An open source Linux client for Google Drive
 
@@ -18,6 +18,7 @@ BuildRequires:  json-c-devel
 BuildRequires:  expat-devel
 BuildRequires:  openssl-devel
 BuildRequires:  boost-devel
+#BuildRequires:  gdbm-devel
 
 %description
 The purpose of this project is to provide an independent implementation
@@ -27,7 +28,7 @@ the servers in Google. The code is written in standard C++.
 
 %package        devel
 Summary:        Development files for grive
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 Development files for grive
@@ -62,5 +63,8 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 
 %changelog
+* Tue May 10 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.1.0-1.20120528git07553e5.R
+- Update to 0.1.0
+
 * Tue May 10 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.0.4-20120510git0c3fdaa.1.R
 - Initial release
