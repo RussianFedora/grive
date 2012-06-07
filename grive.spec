@@ -1,15 +1,32 @@
-%global date 20120531
-%global gitcommit b6fb4a6
-%global gitfull b6fb4a604e51009ece1d8cfe7b45ed603097b47c
+#Correct it to 1 if you want git snapshot version
+%global git 0
+
+%if !%{git}
+#Should be corrected to match the Version
+    %global gitcommit 15c5821
+%else
+    %global gitcommit b6fb4a6
+    %global gitfull b6fb4a604e51009ece1d8cfe7b45ed603097b47c
+    %global date 20120531
+%endif
 
 Name:           grive
 Version:        0.1.0
+%if %{git}
 Release:        1.%{date}git%{gitcommit}%{?dist}
+%else
+Release:        1%{?dist}
+%endif
+
 Summary:        An open source Linux client for Google Drive
 
 License:        GPLv2
 URL:            http://match065.github.com/grive/
+%if %{git}
 Source0:        https://github.com/match065/%{name}/tarball/%{gitfull}
+%else
+Source0:        https://github.com/match065/%{name}/tarball/v%{version}
+%endif
 
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
@@ -63,6 +80,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jun 07 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.1.0-1
+- Jump to release versioning
+
 * Tue May 10 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.1.0-1.20120528git07553e5.R
 - Update to 0.1.0
 
