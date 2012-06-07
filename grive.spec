@@ -35,6 +35,7 @@ BuildRequires:  json-c-devel
 BuildRequires:  expat-devel
 BuildRequires:  openssl-devel
 BuildRequires:  boost-devel
+BuildRequires:  binutils-devel
 #BuildRequires:  gdbm-devel
 
 %description
