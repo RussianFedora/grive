@@ -3,15 +3,15 @@
 
 %if !%{git}
 #Should be corrected to match the Version
-    %global gitcommit 15c5821
+    %global gitcommit 6d50a0f
 %else
-    %global gitcommit b6fb4a6
-    %global gitfull b6fb4a604e51009ece1d8cfe7b45ed603097b47c
-    %global date 20120531
+    %global gitcommit 271dd95
+    %global gitfull 271dd95b2494dd13b6064dd4aac41fb9fb560a66
+    %global date 20120608
 %endif
 
 Name:           grive
-Version:        0.1.0
+Version:        0.1.1
 %if %{git}
 Release:        1.%{date}git%{gitcommit}%{?dist}
 %else
@@ -23,9 +23,9 @@ Summary:        An open source Linux client for Google Drive
 License:        GPLv2
 URL:            http://match065.github.com/grive/
 %if %{git}
-Source0:        https://github.com/match065/%{name}/tarball/%{gitfull}
+Source0:        https://github.com/Grive/%{name}/tarball/%{gitfull}
 %else
-Source0:        https://github.com/match065/%{name}/tarball/v%{version}
+Source0:        https://github.com/Grive/%{name}/tarball/v%{version}
 %endif
 
 BuildRequires:  cmake
@@ -52,7 +52,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Development files for grive
 
 %prep
-%setup -q -n match065-%{name}-%{gitcommit}
+%setup -q -n Grive-%{name}-%{gitcommit}
 
 
 %build
@@ -77,10 +77,13 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %files devel
 %{_includedir}/%{name}*
 %{_libdir}/libgrive.so
-
+%{_libdir}/libgrive.a
 
 
 %changelog
+* Mon Jun 11 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.1.1-1
+- Update to 0.1.1
+
 * Thu Jun 07 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.1.0-1
 - Jump to release versioning
 
