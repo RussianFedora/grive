@@ -33,7 +33,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  json-c-devel
 BuildRequires:  expat-devel
-#BuildRequires:  openssl-devel
+BuildRequires:  openssl-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  boost-devel
 BuildRequires:  binutils-devel
