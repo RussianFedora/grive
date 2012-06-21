@@ -3,7 +3,7 @@
 
 %if !%{git}
 #Should be corrected to match the Version
-    %global gitcommit 6d50a0f
+    %global gitcommit f4b3e48
 %else
     %global gitcommit 271dd95
     %global gitfull 271dd95b2494dd13b6064dd4aac41fb9fb560a66
@@ -11,7 +11,7 @@
 %endif
 
 Name:           grive
-Version:        0.1.1
+Version:        0.2.0
 %if %{git}
 Release:        1.%{date}git%{gitcommit}%{?dist}
 %else
@@ -37,20 +37,13 @@ BuildRequires:  openssl-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  boost-devel
 BuildRequires:  binutils-devel
-#BuildRequires:  gdbm-devel
+
 
 %description
 The purpose of this project is to provide an independent implementation
 of Google Drive client. It uses the Google Document List API to talk to
 the servers in Google. The code is written in standard C++.
 
-
-%package        devel
-Summary:        Development files for grive
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-
-%description    devel
-Development files for grive
 
 %prep
 %setup -q -n Grive-%{name}-%{gitcommit}
@@ -65,23 +58,18 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
 
 %files
 %doc COPYING README
 %{_bindir}/%{name}
-%{_libdir}/libgrive.so.*
-
-%files devel
-%{_includedir}/%{name}*
-%{_libdir}/libgrive.so
-%{_libdir}/libgrive.a
+%{_mandir}/man1/grive.1.gz
 
 
 %changelog
+* Thu Jun 21 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.2.0-1
+- Update to 0.2.0
+- Drop devel subpackage
+
 * Mon Jun 11 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.1.1-1
 - Update to 0.1.1
 
