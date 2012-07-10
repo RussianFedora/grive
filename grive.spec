@@ -1,32 +1,12 @@
-#Correct it to 1 if you want git snapshot version
-%global git 0
-
-%if !%{git}
-#Should be corrected to match the Version
-    %global gitcommit f4b3e48
-%else
-    %global gitcommit 271dd95
-    %global gitfull 271dd95b2494dd13b6064dd4aac41fb9fb560a66
-    %global date 20120608
-%endif
-
 Name:           grive
 Version:        0.2.0
-%if %{git}
-Release:        1.%{date}git%{gitcommit}%{?dist}
-%else
 Release:        1%{?dist}
-%endif
-
 Summary:        An open source Linux client for Google Drive
 
 License:        GPLv2
-URL:            http://match065.github.com/grive/
-%if %{git}
-Source0:        https://github.com/Grive/%{name}/tarball/%{gitfull}
-%else
-Source0:        https://github.com/Grive/%{name}/tarball/v%{version}
-%endif
+URL:            http://www.lbreda.com/grive/
+Source0:        http://www.lbreda.com/grive/_media/packages/%{version}/%{name}-%{version}.tar.gz
+Patch0:         grive-bfd.patch
 
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
@@ -46,8 +26,8 @@ the servers in Google. The code is written in standard C++.
 
 
 %prep
-%setup -q -n Grive-%{name}-%{gitcommit}
-
+%setup -q -n Grive-grive-f4b3e48
+%patch0 -p1 -b .bfd
 
 %build
 %cmake .
@@ -55,7 +35,6 @@ make %{?_smp_mflags}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 
@@ -66,6 +45,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jun 22 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.2.0-2
+- Currected URL and Source0 paths
+
 * Thu Jun 21 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.2.0-1
 - Update to 0.2.0
 - Drop devel subpackage
