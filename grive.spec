@@ -1,12 +1,11 @@
 Name:           grive
 Version:        0.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An open source Linux client for Google Drive
 
 License:        GPLv2
 URL:            http://www.lbreda.com/grive/
 Source0:        http://www.lbreda.com/grive/_media/packages/%{version}/%{name}-%{version}.tar.gz
-Patch0:         grive-bfd.patch
 
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
@@ -26,8 +25,11 @@ the servers in Google. The code is written in standard C++.
 
 
 %prep
-%setup -q -n Grive-grive-f4b3e48
-%patch0 -p1 -b .bfd
+%setup -q
+# Workaround to compile for Fedora 18
+# https://github.com/Grive/grive/issues/72
+sed -i -e '/find_package(BFD)/d' libgrive/CMakeLists.txt
+
 
 %build
 %cmake .
