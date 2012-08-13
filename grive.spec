@@ -1,8 +1,9 @@
 Name:           grive
 Version:        0.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An open source Linux client for Google Drive
 
+Group:          Applications/Internet
 License:        GPLv2
 URL:            http://www.lbreda.com/grive/
 Source0:        http://www.lbreda.com/grive/_media/packages/%{version}/%{name}-%{version}.tar.gz
@@ -47,6 +48,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 13 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.2.0-3
+- Added Group
+
 * Fri Jun 22 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.2.0-2
 - Currected URL and Source0 paths
 
